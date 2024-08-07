@@ -1,11 +1,8 @@
 FROM python:3.11-slim
 
-RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
-	| tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
-	&& echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
-	| tee /etc/apt/sources.list.d/ngrok.list \
-	&& apt update \
-	&& apt install ngrok
+RUN wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+
+RUN tar xvzf ./ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
 
 RUN ngrok config add-authtoken 2ddsF2Xa8B6PEpM71YbxvUuRMee_7sb45voWaSjNEBzCfH5to
 
