@@ -11,10 +11,6 @@ class FlowiseAIExternalSystem:
         self.flowise_chatflow_id = settings.flowise_chatflow_id
         self.flowise_username = settings.flowise_username
         self.flowise_password = settings.flowise_password
-        self.openai_api_key = None
-
-    def set_openai_api_key(self, openai_api_key):
-        self.openai_api_key = openai_api_key
 
     def prediction(
         self,
@@ -28,7 +24,6 @@ class FlowiseAIExternalSystem:
                 "history": history,
                 "overrideConfig": {
                     "sessionId": session_id,
-                    "openAIApiKey": self.openai_api_key,
                 },
             }
 
