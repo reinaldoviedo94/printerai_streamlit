@@ -18,4 +18,6 @@ COPY . .
 
 EXPOSE 8501
 
-CMD ./wrapper_script.sh
+RUN chmod +x docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
