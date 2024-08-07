@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-RUN apt update -y
+RUN apt update -y && apt install -y wget
 
 RUN wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
 
