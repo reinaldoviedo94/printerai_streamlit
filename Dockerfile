@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 	| sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
