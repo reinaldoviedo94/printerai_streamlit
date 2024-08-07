@@ -7,6 +7,10 @@ from use_cases.manage_session_id_use_case import ManageSessionIdUseCase
 
 settings = get_settings()
 
+prompt_disabled = True
+
+prompt_placeholder = "Set an OpenAI API Key first!!!"
+
 manage_session_id_use_case = ManageSessionIdUseCase()
 
 flowise_ai_external_system = FlowiseAIExternalSystem()
@@ -31,13 +35,31 @@ if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
         st.error(str(e))
 
+
+def delete_chat_history():
+    flowise_ai_external_system.delete_chat_history(session_id)
+    st.session_state.chat_history = []
+
+
+with st.sidebar:
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
+    st.button("Clear Chat History", on_click=delete_chat_history)
+
+    if openai_api_key != "":
+        prompt_placeholder = "Ask to Weather Chatbot"
+
+        prompt_disabled = False
+
+        flowise_ai_external_system.set_openai_api_key(openai_api_key)
+
 st.title(f"{settings.page_icon} {settings.page_title}")
 
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-prompt = st.chat_input("Ask to Weather Chatbot")
+prompt = st.chat_input(prompt_placeholder, disabled=prompt_disabled)
 
 if prompt:
     message = {
