@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  tu-aplicacion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: printerai_streamlit
+    ports:
+      - "8051:8051"
+    environment:
+      - FLOWISE_BASE_URL=https://reinaldoviedo94-flowise.hf.space/
+      - FLOWISE_CHATFLOW_ID=267ea9e5-45f4-479c-8261-39ba8cc9c019
+      - FLOWISE_USERNAME=c42ed0ed18dc07cad699a742a4a7cc7c
+      - FLOWISE_PASSWORD=ad1602569190bef23d448b7c2453239d
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    restart: unless-stopped
+    command:
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
+    ports:
+      - "4040:4040"
