@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: printerai_streamlit
     ports:
-      - "8051:8051"
+      - "8501:8501"
     environment:
       - FLOWISE_BASE_URL=https://reinaldoviedo94-flowise.hf.space/
       - FLOWISE_CHATFLOW_ID=267ea9e5-45f4-479c-8261-39ba8cc9c019

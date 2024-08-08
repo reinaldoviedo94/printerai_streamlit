@@ -3,5 +3,5 @@ authtoken: 2ddsF2Xa8B6PEpM71YbxvUuRMee_7sb45voWaSjNEBzCfH5to
 log: stdout
 tunnels:
   printerai_streamlit:
-    addr: "printerai_streamlit:8051"
+    addr: "printerai_streamlit:8501"
     proto: http
