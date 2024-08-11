@@ -18,7 +18,9 @@ class FlowiseAIExternalSystem:
         question: str,
         history: list,
     ):
-        with httpx.Client(base_url=self.flowise_base_url) as client:
+        timeout = httpx.Timeout(timeout=60)
+
+        with httpx.Client(base_url=self.flowise_base_url,timeout=timeout) as client:
             json = {
                 "question": question,
                 "history": history,
@@ -49,7 +51,9 @@ class FlowiseAIExternalSystem:
             password=self.flowise_password,
         )
 
-        with httpx.Client(base_url=self.flowise_base_url, auth=auth) as client:
+        timeout = httpx.Timeout(timeout=60)
+
+        with httpx.Client(base_url=self.flowise_base_url, auth=auth,timeout=timeout) as client:
             params = {
                 "sessionId": session_id,
             }
@@ -74,7 +78,9 @@ class FlowiseAIExternalSystem:
             password=self.flowise_password,
         )
 
-        with httpx.Client(base_url=self.flowise_base_url, auth=auth) as client:
+        timeout = httpx.Timeout(timeout=60)
+
+        with httpx.Client(base_url=self.flowise_base_url, auth=auth,timeout=timeout) as client:
             params = {
                 "sessionId": session_id,
             }
