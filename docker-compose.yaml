@@ -10,7 +10,7 @@ services:
       - "8501:8501"
     environment:
       - FLOWISE_BASE_URL=https://reinaldoviedo94-flowise.hf.space/
-      - FLOWISE_CHATFLOW_ID=267ea9e5-45f4-479c-8261-39ba8cc9c019
+      - FLOWISE_CHATFLOW_ID=5dfad3d2-1f92-4d7d-8196-661c811ad23a
       - FLOWISE_USERNAME=c42ed0ed18dc07cad699a742a4a7cc7c
       - FLOWISE_PASSWORD=ad1602569190bef23d448b7c2453239d
 

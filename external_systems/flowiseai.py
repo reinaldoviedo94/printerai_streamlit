@@ -1,5 +1,5 @@
 import httpx
-
+from datetime import datetime
 from settings import get_settings
 
 settings = get_settings()
@@ -20,7 +20,7 @@ class FlowiseAIExternalSystem:
     ):
         timeout = httpx.Timeout(timeout=60)
 
-        with httpx.Client(base_url=self.flowise_base_url,timeout=timeout) as client:
+        with httpx.Client(base_url=self.flowise_base_url, timeout=timeout) as client:
             json = {
                 "question": question,
                 "history": history,
@@ -53,7 +53,9 @@ class FlowiseAIExternalSystem:
 
         timeout = httpx.Timeout(timeout=60)
 
-        with httpx.Client(base_url=self.flowise_base_url, auth=auth,timeout=timeout) as client:
+        with httpx.Client(
+            base_url=self.flowise_base_url, auth=auth, timeout=timeout
+        ) as client:
             params = {
                 "sessionId": session_id,
             }
@@ -80,7 +82,9 @@ class FlowiseAIExternalSystem:
 
         timeout = httpx.Timeout(timeout=60)
 
-        with httpx.Client(base_url=self.flowise_base_url, auth=auth,timeout=timeout) as client:
+        with httpx.Client(
+            base_url=self.flowise_base_url, auth=auth, timeout=timeout
+        ) as client:
             params = {
                 "sessionId": session_id,
             }

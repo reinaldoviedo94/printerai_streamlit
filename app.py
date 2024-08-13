@@ -58,21 +58,22 @@ if prompt:
 
     st.session_state.chat_history.append(message)
 
-    try:
-        prediction = flowise_ai_external_system.prediction(
-            st.session_state.session_id,
-            prompt,
-            st.session_state.chat_history,
-        )
+    with st.spinner("<--- Watch out, it might put you in a trance."):
+        try:
+            prediction = flowise_ai_external_system.prediction(
+                st.session_state.session_id,
+                prompt,
+                st.session_state.chat_history,
+            )
 
-        message = {
-            "role": "assistant",
-            "content": prediction,
-        }
+            message = {
+                "role": "assistant",
+                "content": prediction,
+            }
 
-        st.chat_message("assistant").markdown(prediction)
+            st.chat_message("assistant").markdown(prediction)
 
-        st.session_state.chat_history.append(message)
+            st.session_state.chat_history.append(message)
 
-    except Exception as e:
-        st.error(str(e))
+        except Exception as e:
+            st.error(str(e))
